@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice Agent Dialer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Voice Agent Dialer</h1>
+
+        <div class="form-group">
+            <label for="phoneNumber">Enter Phone Number:</label>
+            <input type="text" id="phoneNumber" placeholder="+11234567890">
+        </div>
+
+        <button id="callButton">Call Agent</button>
+
+        <div id="status" class="status-message"></div>
+
+        <div id="callDetails">
+            <h2>Call Details</h2>
+            <p><strong>Call SID:</strong> <span id="callSid">-</span></p>
+            <p><strong>DB Record ID:</strong> <span id="dbId">-</span></p>
+            <p><strong>Twilio Status:</strong> <span id="twilioStatus">-</span></p>
+            <p><strong>Recording URL:</strong> <span id="recordingUrl">-</span></p>
+            <!-- More details can be added here and updated via websockets if implemented -->
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
