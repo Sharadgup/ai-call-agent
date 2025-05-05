@@ -3,32 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Voice Agent Dialer</title>
+    <title>AI Call Agent</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Include Socket.IO client library -->
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
 </head>
 <body>
+    <h1>AI Call Agent Simulation</h1>
+
     <div class="container">
-        <h1>AI Voice Agent Dialer</h1>
+        <h2>Step 1: Enter Phone Number</h2>
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" placeholder="e.g., +15551234567">
+        <button id="callButton">Start Call Simulation</button>
+        <p class="disclaimer">
+            <strong>Note:</strong> This will NOT actually dial the number via Bluetooth.
+            You need to manually initiate the call on your phone connected via Bluetooth
+            and ensure audio is routed to/from this computer. This simulation
+            handles the AI conversation part.
+        </p>
 
-        <div class="form-group">
-            <label for="phoneNumber">Enter Phone Number:</label>
-            <input type="text" id="phoneNumber" placeholder="+11234567890">
+        <h2>Step 2: Bluetooth Connection (Manual)</h2>
+        <p>Connect your phone to this computer via Bluetooth for audio input/output.</p>
+        <p>Manually place the call using your phone's dialer.</p>
+
+        <h2>Step 3: Call Control (Manual)</h2>
+        <p>Answer the call when the recipient picks up.</p>
+
+        <h2>Step 4: AI Interaction</h2>
+        <div id="status">Status: Idle</div>
+        <div id="conversation">
+            <h3>Conversation Log:</h3>
+            <ul id="log"></ul>
         </div>
-
-        <button id="callButton">Call Agent</button>
-
-        <div id="status" class="status-message"></div>
-
-        <div id="callDetails">
-            <h2>Call Details</h2>
-            <p><strong>Call SID:</strong> <span id="callSid">-</span></p>
-            <p><strong>DB Record ID:</strong> <span id="dbId">-</span></p>
-            <p><strong>Twilio Status:</strong> <span id="twilioStatus">-</span></p>
-            <p><strong>Recording URL:</strong> <span id="recordingUrl">-</span></p>
-            <!-- More details can be added here and updated via websockets if implemented -->
-        </div>
-
+         <button id="endCallButton" disabled>End Call Simulation</button>
     </div>
+
+    <audio id="audioPlayer" style="display: none;"></audio>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

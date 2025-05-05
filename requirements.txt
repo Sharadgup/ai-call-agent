@@ -3,9 +3,12 @@ pip
 autopep8
 
 # App
-flask
-pymongo 
-google-generativeai 
-python-dotenv 
-twilio # Or equivalent for your chosen telephony service
-ngrok
+# requirements.txt
+Flask
+Flask-SocketIO
+python-socketio[client]
+eventlet  # Or gevent - needed for SocketIO production/async
+pymongo
+google-generativeai
+gTTS
+python-dotenv
